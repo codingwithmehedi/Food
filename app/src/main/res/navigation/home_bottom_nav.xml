@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_bottom_nav"
+    app:startDestination="@id/recipes_item">
+
+    <fragment
+        android:id="@+id/recipes_item"
+        android:name="developers.world.food.ui.main.fragments.recipes.RecipesFragment"
+        android:label="@string/title_recipes"
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipes_item_to_recipesBottomSheet"
+            app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_recipes_item_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorite_item"
+        android:name="developers.world.food.ui.main.fragments.favorite.FavoriteFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/joke_item"
+        android:name="developers.world.food.ui.main.fragments.joke.JokeFragment"
+        android:label="@string/title_joke"
+        tools:layout="@layout/fragment_joke" />
+    <dialog
+        android:id="@+id/recipesBottomSheet"
+        android:name="developers.world.food.ui.main.fragments.recipes.bottomsheet.RecipesBottomSheet"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/recipes_bottom_sheet" >
+        <action
+            android:id="@+id/action_recipesBottomSheet_to_recipes_item"
+            app:destination="@id/recipes_item" />
+    </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="developers.world.food.ui.details.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details" >
+        <argument
+            android:name="recipe"
+            app:argType="developers.world.food.data.remote.dto.recipes.Recipe" />
+    </activity>
+</navigation>
